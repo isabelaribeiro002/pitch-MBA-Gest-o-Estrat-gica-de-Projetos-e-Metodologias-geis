@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey</title>
+    <link rel="stylesheet" href="drawn.css">
+    <style>
+        body {
+            background-image: url('journey.jpg');
+            background-size: cover; /* para cobrir todo o fundo */
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        #login-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white; /* Altere a cor conforme necessário */
+        }
+
+        .login-field {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 200px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 15px;
+            font-size: 16px;
+            background-color: #ff009dfa; /* Cor do botão */
+            border: none;
+            color: black;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: white; /* Cor do botão ao passar o mouse */
+        }
+
+        /* Novo estilo */
+        .login-fields {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Journey <span> Yours Dreams</span> Tours</h1>
+    </header>
+
+    <!-- Formulário de login -->
+    <div id="login-container" class="container">
+        <h2>Login</h2>
+        <form action="processar_login.php" method="post">
+            <div class="login-fields">
+                <div class="login-field">
+                    <label for="email">E-mail:</label>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div class="login-field">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha">
+                </div>
+            </div>
+            <input type="submit" value="Entrar">
+        </form>
+    </div>
+
+    <main>
+        <!-- Seção de Ofertas -->
+        <section id="ofertas">
+            <a href="https://isabela-d-dev-ed.lightning.force.com/lightning/page/home" style="display: inline-block;">
+                <button type="button">Ofertas</button>
+            </a>
+            <p>Consulte todos os pacotes disponíveis</p>
+        </section>
+        
+
+        <!-- Seção de Novidades -->
+        <section id="novidades">
+            <a href="https://isabela-d-dev-ed.lightning.force.com/lightning/page/home" style="display: inline-block;">
+                <button type="button">Novidades</button>
+            </a>    
+            <p>Confira os novos pacotes adicionados recentemente</p>
+        </section>
+
+        <!-- Seção de Cadastro -->
+        <section id="cadastro">
+            <!-- Botão para o cadastro -->
+            <button type="button" onclick="window.location.href='nova_tela.html'">Cadastro</button>
+
+            <p>Inscreva-se para ser atendido por nossos especialistas</p>
+        </section>
+
+        <!-- Seção de indicação premiada -->
+        <section id="Indica e ganhe desconto">
+            <!-- Botão para indicação -->
+            <button type="button" onclick="window.location.href='indicacao.html'">Indicação Premiada</button>
+
+            <p>Indique um amigo</p>
+        </section>
+    </main>
+</body>
+</html>

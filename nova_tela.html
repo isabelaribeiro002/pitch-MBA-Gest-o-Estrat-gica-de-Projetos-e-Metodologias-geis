@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de atendimento</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Cor de fundo para o corpo da página */
+            font-family: Arial, sans-serif; /* Fonte para o texto */
+            color: #333; /* Cor do texto */
+        }
+
+        h1 {
+            color: #00ff88fa; /* Cor do título */
+        }
+
+        form {
+            max-width: 400px; /* Largura máxima do formulário */
+            margin: 0 auto; /* Centralizar o formulário na página */
+            background-color: #fff; /* Cor de fundo para o formulário */
+            padding: 20px; /* Espaçamento interno do formulário */
+            border-radius: 8px; /* Borda arredondada do formulário */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra do formulário */
+        }
+
+        label {
+            display: block; /* Exibir rótulos em uma linha separada */
+            margin-bottom: 6px; /* Espaçamento inferior dos rótulos */
+            font-weight: bold; /* Texto em negrito para os rótulos */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            width: 100%; /* Largura total dos campos de entrada */
+            padding: 8px; /* Espaçamento interno dos campos de entrada */
+            margin-bottom: 16px; /* Espaçamento inferior dos campos de entrada */
+            border: 1px solid #ccc; /* Borda dos campos de entrada */
+            border-radius: 4px; /* Borda arredondada dos campos de entrada */
+        }
+
+        input[type="submit"] {
+            background-color:  #00ff88fa; /* Cor de fundo para o botão de envio */
+            color: #0e0d0d; /* Cor do texto do botão de envio */
+            padding: 10px 20px; /* Espaçamento interno do botão de envio */
+            border: none; /* Remover a borda do botão de envio */
+            border-radius: 4px; /* Borda arredondada do botão de envio */
+            cursor: pointer; /* Alterar o cursor ao passar sobre o botão de envio */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #15b300; /* Cor de fundo do botão de envio ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <h1>Fale com o especialista</h1>
+    <p> Digite seus dados e lugar que tem interesse de viajar que um dos nossos especialistas irá entrar em contato contigo.</p>
+    <form id="formulario" method="POST" onsubmit="return validarFormulario()">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="celular">Celular:</label>
+        <input type="text" id="celular" name="celular" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="lugar">Lugar de Interesse:</label>
+        <input type="text" id="lugar" name="lugar" required>
+
+        <label for="dataInicio">Data de Início:</label>
+        <input type="date" id="dataInicio" name="dataInicio" required>
+
+        <label for="dataFim">Data de Fim:</label>
+        <input type="date" id="dataFim" name="dataFim" required>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        function validarFormulario() {
+            // Validação do formulário
+
+            // Exibir mensagem de "Registrado com sucesso!"
+            alert("Você está próxima de realizar seu sonho, aguarde em breve entraremos em contato.");
+
+            // Limpar os campos do formulário
+            document.getElementById('formulario').reset();
+
+            // Rolar para o topo do formulário
+            document.getElementById('formulario').scrollIntoView();
+            
+            return false; // Impede o envio do formulário
+        }
+    </script>
+</body>
+</html>

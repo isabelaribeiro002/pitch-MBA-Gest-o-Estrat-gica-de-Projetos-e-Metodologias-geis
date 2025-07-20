@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicação</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Cor de fundo para o corpo da página */
+            font-family: Arial, sans-serif; /* Fonte para o texto */
+            color: #333; /* Cor do texto */
+        }
+
+        h1 {
+            color: #ff009dfa; /* Cor do título */
+        }
+
+        .pagina2 {
+            display: none; /* Ocultar a segunda página inicialmente */
+        }
+
+        form {
+            
+            max-width: 400px; /* Largura máxima do formulário */
+            margin: 0 auto; /* Centralizar o formulário na página */
+            background-color: #fff; /* Cor de fundo para o formulário */
+            padding: 25px; /* Espaçamento interno do formulário */
+            border-radius: 8px; /* Borda arredondada do formulário */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra do formulário */
+        }
+
+        label {
+            display: block; /* Exibir rótulos em uma linha separada */
+            margin-bottom: 6px; /* Espaçamento inferior dos rótulos */
+            font-weight: bold; /* Texto em negrito para os rótulos */
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%; /* Largura total dos campos de entrada */
+            padding: 8px; /* Espaçamento interno dos campos de entrada */
+            margin-bottom: 16px; /* Espaçamento inferior dos campos de entrada */
+            border: 1px solid #ccc; /* Borda dos campos de entrada */
+            border-radius: 4px; /* Borda arredondada dos campos de entrada */
+        }
+
+        input[type="submit"] {
+            background-color:  #ff009dfa; /* Cor de fundo para o botão de envio */
+            color: #0e0d0d; /* Cor do texto do botão de envio */
+            padding: 10px 20px; /* Espaçamento interno do botão de envio */
+            border: none; /* Remover a borda do botão de envio */
+            border-radius: 4px; /* Borda arredondada do botão de envio */
+            cursor: pointer; /* Alterar o cursor ao passar sobre o botão de envio */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #a400b3; /* Cor de fundo do botão de envio ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <h1>Indique e ganhe desconto</h1>
+    <p>Digite seus dados na página 1 e depois na página 2, você deverá informar os dados de quem está indicando (indicado).<br>
+        <br>
+        Não se esqueça de consultar as condições para ganhar o seu desconto <a href="url_do_seu_link">aqui</a></p>
+    
+    <form id="formulario" method="POST" onsubmit="return validarFormulario()">
+        <!-- Página 1 - Dados do Indicador -->
+        <div id="pagina1">
+            <label for="nomeIndicador">Nome do Indicador:</label>
+            <input type="text" id="nomeIndicador" name="nomeIndicador" required>
+
+            <label for="cpfIndicador">CPF do Indicador:</label>
+            <input type="text" id="cpfIndicador" name="cpfIndicador" required oninput="formatarCPF(this)" maxlength="14">
+
+            <label for="emailIndicador">E-mail do Indicador:</label>
+            <input type="email" id="emailIndicador" name="emailIndicador" required>
+
+            <label for="celularIndicador">Celular do Indicador:</label>
+            <input type="text" id="celularIndicador" name="celularIndicador" required>
+
+            <input type="button" value="Próximo" onclick="validarPagina1()">
+        </div>
+
+        <!-- Página 2 - Dados do Indicado -->
+        <div id="pagina2" class="pagina2">
+            <label for="nomeIndicado">Nome do Indicado:</label>
+            <input type="text" id="nomeIndicado" name="nomeIndicado" required>
+
+            <label for="cpfIndicado">CPF do Indicado:</label>
+            <input type="text" id="cpfIndicado" name="cpfIndicado" required oninput="formatarCPF(this)" maxlength="14">
+
+            <label for="emailIndicado">E-mail do Indicado:</label>
+            <input type="email" id="emailIndicado" name="emailIndicado" required>
+
+            <label for="celularIndicado">Celular do Indicado:</label>
+            <input type="text" id="celularIndicado" name="celularIndicado" required>
+
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+
+    <script>
+        function validarPagina1() {
+            var nomeIndicador = document.getElementById('nomeIndicador').value;
+            var cpfIndicador = document.getElementById('cpfIndicador').value;
+            var emailIndicador = document.getElementById('emailIndicador').value;
+            var celularIndicador = document.getElementById('celularIndicador').value;
+
+            // Verifica se algum campo da página 1 está vazio
+            if (nomeIndicador === '' || cpfIndicador === '' || emailIndicador === '' || celularIndicador === '') {
+                alert("Por favor, preencha todos os campos da página 1.");
+            } else {
+                // Se todos os campos estiverem preenchidos, avança para a página 2
+                mostrarPagina2();
+            }
+        }
+
+        function mostrarPagina2() {
+            document.getElementById('pagina1').style.display = 'none';
+            document.getElementById('pagina2').style.display = 'block';
+        }
+
+        function validarFormulario() {
+            // Validação do formulário
+
+            // Exibir mensagem de "Registrado com sucesso!"
+            alert("Você está próxima de realizar seu sonho, aguarde em breve entraremos em contato.");
+
+            // Limpar os campos do formulário
+            document.getElementById('formulario').reset();
+
+            // Rolar para o topo do formulário
+            document.getElementById('formulario').scrollIntoView();
+            
+            // Retorna para a página 1
+            document.getElementById('pagina1').style.display = 'block';
+            document.getElementById('pagina2').style.display = 'none';
+            
+            return false; // Impede o envio do formulário
+        }
+
+        function formatarCPF(campo) {
+            var cpf = campo.value.replace(/\D/g, '');
+            if (cpf.length > 3 && cpf.length < 7)
+                campo.value = cpf.substr(0, 3) + '.' + cpf.substr(3);
+            else if (cpf.length >= 7 && cpf.length < 10)
+                campo.value = cpf.substr(0, 3) + '.' + cpf.substr(3, 3) + '.' + cpf.substr(6);
+            else if (cpf.length >= 10 && cpf.length < 12)
+                campo.value = cpf.substr(0, 3) + '.' + cpf.substr(3, 3) + '.' + cpf.substr(6, 3) + '-' + cpf.substr(9);
+            else if (cpf.length >= 12)
+                campo.value = cpf.substr(0, 3) + '.' + cpf.substr(3, 3) + '.' + cpf.substr(6, 3) + '-' + cpf.substr(9, 2);
+        }
+    </script>
+</body>
+</html>
